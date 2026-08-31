@@ -56,32 +56,66 @@
 
 
 
-#include<iostream>
+// #include<iostream>
+// using namespace std;
+
+
+
+// void sum(int a,int b){
+//     cout<<"SUM: "<<a+b<<endl;
+// }
+// void sum(float a,float b){
+//     cout<<"SUM: "<<a+b<<endl;
+// }
+// void sum(string a,string b){
+//     cout<<"CONCATENATION: "<<a+b<<endl;
+// }
+
+
+// int main(){
+//     sum(2,3);
+//     sum(2.5f,3.5f);
+//     sum("C++","PROGRAM");
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
 using namespace std;
 
+class Student
+{
+public:
+    static int count;
 
+    Student()
+    {
+        count++;
+    }
+};
 
-void sum(int a,int b){
-    cout<<"SUM: "<<a+b<<endl;
+int Student::count = 0;
+
+int main()
+{
+    Student s1;
+    Student s2;
+    Student s3;
+
+    cout << Student::count;
+
+    return 0;
 }
-void sum(float a,float b){
-    cout<<"SUM: "<<a+b<<endl;
-}
-void sum(string a,string b){
-    cout<<"CONCATENATION: "<<a+b<<endl;
-}
-
-
-int main(){
-    sum(2,3);
-    sum(2.5f,3.5f);
-    sum("C++","PROGRAM");
-}
-
-
-
-
-
-
 
 
