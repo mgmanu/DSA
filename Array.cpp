@@ -496,3 +496,185 @@
 //     }
 //     cout<<"SUM = "<<sum;
 // } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// #include<iostream>
+// using namespace std;
+
+// int main(){
+//     int n;
+//     cout<<"Enter the size of array: ";
+//     cin>>n;
+//     int arr[n];
+    
+//     cout<<"Enter " <<n<< " array elements: ";
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+
+//     cout<<"Array elements are: ";
+//     for(int i=0;i<n;i++){
+//         cout<<arr[i]<<" ";
+//     }
+
+//     int max = arr[0];
+//     int min = arr[0];
+//     for(int i=0;i<n;i++){
+//         if(arr[i]>max) {
+//             max=arr[i];
+//         }
+//     }
+
+//     for(int i=0;i<n;i++){
+//         if(arr[i]<min) {
+//             min=arr[i];
+//         }
+//     }
+
+//     cout<<endl;
+//     cout<<"MAXIMUM ELEMENT : "<<max<<endl;
+//     cout<<"MINIMUM ELEMENT : "<<min<<endl;
+
+//     int search;
+//     cout<<"Enter the element to be searched: ";
+//     cin>>search;
+//     int flag=0;
+//     int i;
+//     for(int i=0;i<n;i++){
+//         if(arr[i]==search) flag=1;
+//     }
+//     if(flag==1) cout<<"ELEMENT FOUND AT INDEX "<<i<<endl;
+//     else cout<<"ELEMENT NOT FOUND"<<endl;
+    
+//     i=0;
+//     int j=n-1;
+//     int temp;
+//     while(i<j){
+//         temp=arr[i];
+//         arr[i]=arr[j];
+//         arr[j]=temp;
+//         i++,j--;
+//     }
+//     cout<<"ARRAY IN REVERSE ORDER"<<endl;
+//     for(int i=0;i<n;i++){
+//         cout<<arr[i]<<" ";
+//     }   
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// #include<iostream>
+// using namespace std;
+
+// int main(){
+//     int n;
+//     int fact=1;
+//     cout<<"Enter a number: ";
+//     cin>>n;
+//     for(int i=1;i<=n;i++){
+//         fact*=i;
+//     }
+//     cout<<"FACTORIAL OF "<<n<<" is "<<fact<<endl;
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// #include<iostream>
+// using namespace std;
+
+
+// int main()
+// {
+//     int a,b;
+//     cin>>a>>b;
+//     int choice;
+//     cout<<"Enter Choice: ";
+//     cout<<endl;
+//     cout<<"1.ADD"<<endl;
+//     cout<<"2.SUB"<<endl;
+//     cout<<"3.MUL"<<endl;
+//     cout<<"4.DIV"<<endl;
+//     cout<<"5.MOD"<<endl;
+
+//     cin>>choice;
+
+//     switch(choice){
+//         case 1:
+//         cout<<a+b<<endl;
+//         break;
+
+//         case 2:
+//         cout<<a-b<<endl;
+//         break;
+
+//         case 3:
+//         cout<<a*b<<endl;
+//         break;
+
+//         case 4:
+//         cout<<a/b<<endl;
+//         break;
+        
+//         case 5:
+//         cout<<a%b<<endl;
+//         break;
+
+//         default:
+//         cout<<"Invalid Choice"<<endl;
+//     }
+
+// }
