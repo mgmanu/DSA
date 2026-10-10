@@ -63,3 +63,65 @@ int main() {
 
 //     return 0;
 // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+class BankAccount {
+private:
+    double balance;
+
+public:
+    BankAccount(double balance = 0.0) {
+        this->balance = balance;
+    }
+
+    BankAccount operator+(const BankAccount &other) const {
+        return BankAccount(this->balance + other.balance);
+    }
+
+    bool operator==(const BankAccount &other) const {
+        return this->balance == other.balance;
+    }
+
+    void displayBalance() const {
+        cout << "Balance: " << balance << endl;
+    }
+};
+
+int main() {
+    double b1, b2;
+
+    cin >> b1 >> b2;
+
+    BankAccount account1(b1);
+    BankAccount account2(b2);
+
+    BankAccount account3 = account1 + account2;
+
+    cout << "Combined ";
+    account3.displayBalance();
+
+    if (account1 == account2) {
+        cout << "Both accounts have equal balances." << endl;
+    } else {
+        cout << "Both accounts have different balances." << endl;
+    }
+
+    return 0;
+}
