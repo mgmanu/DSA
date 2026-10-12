@@ -1,28 +1,28 @@
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-class Complex {
-public:
-    int real, imag;
+// class Complex {
+// public:
+//     int real, imag;
 
-    Complex(int r, int i) {
-        real = r;
-        imag = i;
-    }
+//     Complex(int r, int i) {
+//         real = r;
+//         imag = i;
+//     }
 
-    Complex operator+(const Complex& obj) {
-        return Complex(real + obj.real, imag + obj.imag);
-    }
-};
+//     Complex operator+(const Complex& obj) {
+//         return Complex(real + obj.real, imag + obj.imag);
+//     }
+// };
 
-int main() {
-    Complex c1(2, 3);
-    Complex c2(4, 5);
+// int main() {
+//     Complex c1(2, 3);
+//     Complex c2(4, 5);
 
-    Complex c3 = c1 + c2;
+//     Complex c3 = c1 + c2;
 
-    cout << c3.real << " + " << c3.imag << "i";
-}
+//     cout << c3.real << " + " << c3.imag << "i";
+// }
 
 
 
@@ -79,49 +79,49 @@ int main() {
 
 
 
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-class BankAccount {
-private:
-    double balance;
+// class BankAccount {
+// private:
+//     double balance;
 
-public:
-    BankAccount(double balance = 0.0) {
-        this->balance = balance;
-    }
+// public:
+//     BankAccount(double balance = 0.0) {
+//         this->balance = balance;
+//     }
 
-    BankAccount operator+(const BankAccount &other) const {
-        return BankAccount(this->balance + other.balance);
-    }
+//     BankAccount operator+(const BankAccount &other) const {
+//         return BankAccount(this->balance + other.balance);
+//     }
 
-    bool operator==(const BankAccount &other) const {
-        return this->balance == other.balance;
-    }
+//     bool operator==(const BankAccount &other) const {
+//         return this->balance == other.balance;
+//     }
 
-    void displayBalance() const {
-        cout << "Balance: " << balance << endl;
-    }
-};
+//     void displayBalance() const {
+//         cout << "Balance: " << balance << endl;
+//     }
+// };
 
-int main() {
-    double b1, b2;
+// int main() {
+//     double b1, b2;
 
-    cin >> b1 >> b2;
+//     cin >> b1 >> b2;
 
-    BankAccount account1(b1);
-    BankAccount account2(b2);
+//     BankAccount account1(b1);
+//     BankAccount account2(b2);
 
-    BankAccount account3 = account1 + account2;
+//     BankAccount account3 = account1 + account2;
 
-    cout << "Combined ";
-    account3.displayBalance();
+//     cout << "Combined ";
+//     account3.displayBalance();
 
-    if (account1 == account2) {
-        cout << "Both accounts have equal balances." << endl;
-    } else {
-        cout << "Both accounts have different balances." << endl;
-    }
+//     if (account1 == account2) {
+//         cout << "Both accounts have equal balances." << endl;
+//     } else {
+//         cout << "Both accounts have different balances." << endl;
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
