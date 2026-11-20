@@ -1,84 +1,79 @@
 #include <iostream>
 #include <string>
 using namespace std;
-class Ticket
-{
-protected:
-    string movieName;
-    float ticketPrice;
-    int numberOfTickets;
+class BankAccount{
+    int accountNo;
+    string name;
+    float balance;
 public:
-    virtual void getDetails()
+    // Parameterized constructor
+    BankAccount(int accNo, string n, float b){
+        accountNo = accNo;
+        name = n;
+        balance = b;
+    }
+    // Deposit function
+    void deposit(float amount){
+        balance = balance + amount;
+        cout << "Amount deposited successfully." << endl;
+    }
+    // Withdrawal function
+    void withdraw(float amount){
+        if (amount <= balance){
+            balance = balance - amount;
+            cout << "Amount withdrawn successfully." << endl;
+        }
+        else{
+            cout << "Insufficient balance." << endl;
+        }
+    }
+    // Display function
+    void displayBalance(){
+        cout << "\nAccount Number: " << accountNo << endl;
+        cout << "Account Holder: " << name << endl;
+        cout << "Balance: " << balance << endl;
+    }
+    // Destructor
+    ~BankAccount()
     {
-        cout << "Enter movie name: ";
-        cin >> movieName;
-        cout << "Enter ticket price: ";
-        cin >> ticketPrice;
-        cout << "Enter number of tickets: ";
-        cin >> numberOfTickets;
-    }
-    virtual void displayBookingDetails()
-    {
-        cout << "Movie Name: " << movieName << endl;
-        cout << "Ticket Price: Rs. " << ticketPrice << endl;
-        cout << "Number of Tickets: " << numberOfTickets << endl;
-    }
-};
-class RegularShow : public Ticket{
-public:
-    void getDetails(){
-        Ticket::getDetails();
-    }
-    void displayBookingDetails(){
-        cout << "\nRegular Show Booking Details" << endl;
-        Ticket::displayBookingDetails();
-        cout << "Total Cost: Rs. "
-             << ticketPrice * numberOfTickets << endl;
-    }
-};
-class PremiumShow : public Ticket{
-public:
-    void getDetails(){
-        Ticket::getDetails();
-    }
-    void displayBookingDetails(){
-        cout << "\nPremium Show Booking Details" << endl;
-        Ticket::displayBookingDetails();
-        cout << "Total Cost: Rs. "
-             << ticketPrice * numberOfTickets << endl;
-    }
-};
-class ThreeDShow : public Ticket{
-public:
-    void getDetails(){
-        Ticket::getDetails();
-    }
-    void displayBookingDetails(){
-        cout << "\n3D Show Booking Details" << endl;
-        Ticket::displayBookingDetails();
-        cout << "Total Cost: Rs. "
-             << ticketPrice * numberOfTickets << endl;
+        cout << "Account object destroyed." << endl;
     }
 };
 int main()
 {
-    Ticket *t[3];
-    RegularShow r;
-    PremiumShow p;
-    ThreeDShow d;
-    t[0] = &r;
-    t[1] = &p;
-    t[2] = &d;
-    cout << "Enter Regular Show Details" << endl;
-    t[0]->getDetails();
-    cout << "\nEnter Premium Show Details" << endl;
-    t[1]->getDetails();
-    cout << "\nEnter 3D Show Details" << endl;
-    t[2]->getDetails();
-    cout << "\n----- Ticket Booking Summary -----" << endl;
-    for (int i = 0; i < 3; i++)
-    {
-        t[i]->displayBookingDetails();
-    }
+    int accountNo;
+    string name;
+    float balance;
+    float amount;
+    // Reading details for Account 1
+    cout << "Enter Account 1 Number: ";
+    cin >> accountNo;
+    cout << "Enter Account 1 Holder Name: ";
+    cin >> name;
+    cout << "Enter Account 1 Initial Balance: ";
+    cin >> balance;
+    BankAccount acc1(accountNo, name, balance);
+    cout << "\nEnter amount to deposit: ";
+    cin >> amount;
+    acc1.deposit(amount);
+    cout << "Enter amount to withdraw: ";
+    cin >> amount;
+    acc1.withdraw(amount);
+    acc1.displayBalance();
+    // Reading details for Account 2
+    cout << "\nEnter Account 2 Number: ";
+    cin >> accountNo;
+    cout << "Enter Account 2 Holder Name: ";
+    cin >> name;
+    cout << "Enter Account 2 Initial Balance: ";
+    cin >> balance;
+    BankAccount acc2(accountNo, name, balance);
+    cout << "\nEnter amount to deposit: ";
+    cin >> amount;
+    acc2.deposit(amount);
+    cout << "Enter amount to withdraw: ";
+    cin >> amount;
+    acc2.withdraw(amount);
+    acc2.displayBalance();
     return 0;
 }
