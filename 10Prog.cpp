@@ -81,82 +81,191 @@
 
 
 
+// #include <iostream>
+// #include <string>
+// using namespace std;
+// class Ticket{
+//     int ticketNumber;
+//     string movieName;
+//     int totalSeats;
+//     int bookedSeats;
+// public:
+//     Ticket(int tNo, string name, int total){
+//         ticketNumber = tNo;
+//         movieName = name;
+//         totalSeats = total;
+//         bookedSeats = 0;
+//     }
+//     // Overload 1: book a single seat by seat number
+//     void bookSeats(int seatNumber){
+//         bookedSeats += 1;
+//         cout << "Single seat booked successfully." << endl;
+//     }
+//     // Overload 2: book multiple seats
+//     void bookSeats(int numberOfSeats, bool multiple){
+//         if (numberOfSeats <= totalSeats - bookedSeats){
+//             bookedSeats += numberOfSeats;
+//             cout << "Multiple seats booked successfully." << endl;
+//         }
+//         else{
+//             cout << "Not enough seats available." << endl;
+//         }
+//     }
+//     // Overload 3: book seats for a specific seat category
+//     void bookSeats(int numberOfSeats, string category)
+//     {
+//         if (numberOfSeats <= totalSeats - bookedSeats){
+//             bookedSeats += numberOfSeats;
+//             cout << numberOfSeats << " " << category << " seats booked successfully." << endl;
+//         }
+//         else{
+//             cout << "Not enough seats available." << endl;
+//         }
+//     }
+//     void displayBookingSummary(){
+//         cout << "\nBooking Summary:" << endl;
+//         cout << "Ticket Number: " << ticketNumber << endl;
+//         cout << "Movie Name: " << movieName << endl;
+//         cout << "Total Seats: " << totalSeats << endl;
+//         cout << "Booked Seats: " << bookedSeats << endl;
+//         cout << "Available Seats: " << totalSeats - bookedSeats << endl;
+//     }
+//     ~Ticket(){
+//         cout << "Ticket object destroyed." << endl;
+//     }
+// };
+// int main(){
+//     int ticketNumber, totalSeats;
+//     string movieName;
+//     int seatNumber, numberOfSeats, categorySeats;
+//     string category;
+//     cout << "Enter Ticket Number: ";
+//     cin >> ticketNumber;
+//     cout << "Enter Movie Name: ";
+//     cin >> movieName;
+//     cout << "Enter Total Seats: ";
+//     cin >> totalSeats;
+//     Ticket t(ticketNumber, movieName, totalSeats);
+//     cout << "Enter Seat Number for single booking: ";
+//     cin >> seatNumber;
+//     t.bookSeats(seatNumber);
+//     cout << "Enter Number of Seats for multiple booking: ";
+//     cin >> numberOfSeats;
+//     t.bookSeats(numberOfSeats, true);
+//     cout << "Enter Seat Category: ";
+//     cin >> category;
+//     cout << "Enter Number of Seats for category booking: ";
+//     cin >> categorySeats;
+//     t.bookSeats(categorySeats, category);
+//     t.displayBookingSummary();
+//     return 0;
+// }
+
+
+
+
 #include <iostream>
 #include <string>
 using namespace std;
-class Ticket{
-    int ticketNumber;
-    string movieName;
-    int totalSeats;
-    int bookedSeats;
+class Employee
+{
+private:
+    int employeeId;
+    string employeeName;
+    float salary;
+    float bonus;
+    float overtimePay;
+    float netSalary;
 public:
-    Ticket(int tNo, string name, int total){
-        ticketNumber = tNo;
-        movieName = name;
-        totalSeats = total;
-        bookedSeats = 0;
-    }
-    // Overload 1: book a single seat by seat number
-    void bookSeats(int seatNumber){
-        bookedSeats += 1;
-        cout << "Single seat booked successfully." << endl;
-    }
-    // Overload 2: book multiple seats
-    void bookSeats(int numberOfSeats, bool multiple){
-        if (numberOfSeats <= totalSeats - bookedSeats){
-            bookedSeats += numberOfSeats;
-            cout << "Multiple seats booked successfully." << endl;
-        }
-        else{
-            cout << "Not enough seats available." << endl;
-        }
-    }
-    // Overload 3: book seats for a specific seat category
-    void bookSeats(int numberOfSeats, string category)
-    {
-        if (numberOfSeats <= totalSeats - bookedSeats){
-            bookedSeats += numberOfSeats;
-            cout << numberOfSeats << " " << category << " seats booked successfully." << endl;
-        }
-        else{
-            cout << "Not enough seats available." << endl;
-        }
-    }
-    void displayBookingSummary(){
-        cout << "\nBooking Summary:" << endl;
-        cout << "Ticket Number: " << ticketNumber << endl;
-        cout << "Movie Name: " << movieName << endl;
-        cout << "Total Seats: " << totalSeats << endl;
-        cout << "Booked Seats: " << bookedSeats << endl;
-        cout << "Available Seats: " << totalSeats - bookedSeats << endl;
-    }
-    ~Ticket(){
-        cout << "Ticket object destroyed." << endl;
-    }
+    Employee();
+    void setData(int id, string name, float sal);
+    void calculateOvertimePay(int hours, float rate);
+    void isEligibleForBonus();
+    void calculateNetSalary();
+    void display();
+    ~Employee();
 };
+// Default Constructor
+Employee::Employee(){
+    employeeId = 0;
+    employeeName = "";
+    salary = 0;
+    bonus = 0;
+    overtimePay = 0;
+    netSalary = 0;
+}
+// Set employee details
+void Employee::setData(int id, string name, float sal){
+    employeeId = id;
+    employeeName = name;
+    salary = sal;
+}
+// Calculate overtime pay
+void Employee::calculateOvertimePay(int hours, float rate){
+    overtimePay = hours * rate;
+}
+// Check bonus eligibility
+void Employee::isEligibleForBonus(){
+    if (salary >= 50000){
+        bonus = salary * 0.10;
+        cout << "Eligible for bonus." << endl;
+    }
+    else{
+        bonus = 0;
+        cout << "Not eligible for bonus." << endl;
+    }
+}
+// Calculate net salary
+void Employee::calculateNetSalary(){
+    netSalary = salary + bonus + overtimePay;
+}
+// Display employee details
+void Employee::display(){
+    cout << "Employee ID: " << employeeId << endl;
+    cout << "Employee Name: " << employeeName << endl;
+    cout << "Basic Salary: " << salary << endl;
+    cout << "Bonus: " << bonus << endl;
+    cout << "Overtime Pay: " << overtimePay << endl;
+    cout << "Net Salary: " << netSalary << endl;
+}
+// Destructor
+Employee::~Employee(){
+    cout << "Employee object destroyed." << endl;
+}
 int main(){
-    int ticketNumber, totalSeats;
-    string movieName;
-    int seatNumber, numberOfSeats, categorySeats;
-    string category;
-    cout << "Enter Ticket Number: ";
-    cin >> ticketNumber;
-    cout << "Enter Movie Name: ";
-    cin >> movieName;
-    cout << "Enter Total Seats: ";
-    cin >> totalSeats;
-    Ticket t(ticketNumber, movieName, totalSeats);
-    cout << "Enter Seat Number for single booking: ";
-    cin >> seatNumber;
-    t.bookSeats(seatNumber);
-    cout << "Enter Number of Seats for multiple booking: ";
-    cin >> numberOfSeats;
-    t.bookSeats(numberOfSeats, true);
-    cout << "Enter Seat Category: ";
-    cin >> category;
-    cout << "Enter Number of Seats for category booking: ";
-    cin >> categorySeats;
-    t.bookSeats(categorySeats, category);
-    t.displayBookingSummary();
+    int n;
+    int id;
+    string name;
+    float salary;
+    int overtimeHours;
+    float overtimeRate;
+    cout << "Enter number of employees: ";
+    cin >> n;
+    Employee employees[10];
+    // Input employee details
+    for (int i = 0; i < n; i++){
+        cout << "Enter employee " << i + 1 << " ID: ";
+        cin >> id;
+        cout << "Enter employee " << i + 1 << " name: ";
+        cin >> name;
+        cout << "Enter employee " << i + 1 << " salary: ";
+        cin >> salary;
+        employees[i].setData(id, name, salary);
+    }
+    // Salary processing
+    for (int i = 0; i < n; i++){
+        cout << "Enter overtime hours for employee " << i + 1 << ": ";
+        cin >> overtimeHours;
+        cout << "Enter overtime rate for employee " << i + 1 << ": ";
+        cin >> overtimeRate;
+        employees[i].calculateOvertimePay(overtimeHours, overtimeRate);
+        employees[i].isEligibleForBonus();
+        employees[i].calculateNetSalary();
+    }
+    // Display employee details
+    cout << "\nEmployee Details:" << endl;
+    for (int i = 0; i < n; i++){
+        employees[i].display();
+    }
     return 0;
 }
