@@ -164,108 +164,176 @@
 
 
 
+// #include <iostream>
+// #include <string>
+// using namespace std;
+// class Employee
+// {
+// private:
+//     int employeeId;
+//     string employeeName;
+//     float salary;
+//     float bonus;
+//     float overtimePay;
+//     float netSalary;
+// public:
+//     Employee();
+//     void setData(int id, string name, float sal);
+//     void calculateOvertimePay(int hours, float rate);
+//     void isEligibleForBonus();
+//     void calculateNetSalary();
+//     void display();
+//     ~Employee();
+// };
+// // Default Constructor
+// Employee::Employee(){
+//     employeeId = 0;
+//     employeeName = "";
+//     salary = 0;
+//     bonus = 0;
+//     overtimePay = 0;
+//     netSalary = 0;
+// }
+// // Set employee details
+// void Employee::setData(int id, string name, float sal){
+//     employeeId = id;
+//     employeeName = name;
+//     salary = sal;
+// }
+// // Calculate overtime pay
+// void Employee::calculateOvertimePay(int hours, float rate){
+//     overtimePay = hours * rate;
+// }
+// // Check bonus eligibility
+// void Employee::isEligibleForBonus(){
+//     if (salary >= 50000){
+//         bonus = salary * 0.10;
+//         cout << "Eligible for bonus." << endl;
+//     }
+//     else{
+//         bonus = 0;
+//         cout << "Not eligible for bonus." << endl;
+//     }
+// }
+// // Calculate net salary
+// void Employee::calculateNetSalary(){
+//     netSalary = salary + bonus + overtimePay;
+// }
+// // Display employee details
+// void Employee::display(){
+//     cout << "Employee ID: " << employeeId << endl;
+//     cout << "Employee Name: " << employeeName << endl;
+//     cout << "Basic Salary: " << salary << endl;
+//     cout << "Bonus: " << bonus << endl;
+//     cout << "Overtime Pay: " << overtimePay << endl;
+//     cout << "Net Salary: " << netSalary << endl;
+// }
+// // Destructor
+// Employee::~Employee(){
+//     cout << "Employee object destroyed." << endl;
+// }
+// int main(){
+//     int n;
+//     int id;
+//     string name;
+//     float salary;
+//     int overtimeHours;
+//     float overtimeRate;
+//     cout << "Enter number of employees: ";
+//     cin >> n;
+//     Employee employees[10];
+//     // Input employee details
+//     for (int i = 0; i < n; i++){
+//         cout << "Enter employee " << i + 1 << " ID: ";
+//         cin >> id;
+//         cout << "Enter employee " << i + 1 << " name: ";
+//         cin >> name;
+//         cout << "Enter employee " << i + 1 << " salary: ";
+//         cin >> salary;
+//         employees[i].setData(id, name, salary);
+//     }
+//     // Salary processing
+//     for (int i = 0; i < n; i++){
+//         cout << "Enter overtime hours for employee " << i + 1 << ": ";
+//         cin >> overtimeHours;
+//         cout << "Enter overtime rate for employee " << i + 1 << ": ";
+//         cin >> overtimeRate;
+//         employees[i].calculateOvertimePay(overtimeHours, overtimeRate);
+//         employees[i].isEligibleForBonus();
+//         employees[i].calculateNetSalary();
+//     }
+//     // Display employee details
+//     cout << "\nEmployee Details:" << endl;
+//     for (int i = 0; i < n; i++){
+//         employees[i].display();
+//     }
+//     return 0;
+// }
+
+
+
+
+
 #include <iostream>
-#include <string>
 using namespace std;
-class Employee
-{
+
+class BankAccount {
 private:
-    int employeeId;
-    string employeeName;
-    float salary;
-    float bonus;
-    float overtimePay;
-    float netSalary;
+    double balance;
+
 public:
-    Employee();
-    void setData(int id, string name, float sal);
-    void calculateOvertimePay(int hours, float rate);
-    void isEligibleForBonus();
-    void calculateNetSalary();
-    void display();
-    ~Employee();
+    // Constructor
+    BankAccount(double b);
+
+    // Display balance
+    void displayBalance();
+
+    // Operator overloading
+    BankAccount operator+(const BankAccount& account);
+    bool operator==(const BankAccount& account) const;
 };
-// Default Constructor
-Employee::Employee(){
-    employeeId = 0;
-    employeeName = "";
-    salary = 0;
-    bonus = 0;
-    overtimePay = 0;
-    netSalary = 0;
+
+BankAccount::BankAccount(double b) {
+    balance = b;
 }
-// Set employee details
-void Employee::setData(int id, string name, float sal){
-    employeeId = id;
-    employeeName = name;
-    salary = sal;
+
+void BankAccount::displayBalance() {
+    cout << "Balance: " << balance << endl;
 }
-// Calculate overtime pay
-void Employee::calculateOvertimePay(int hours, float rate){
-    overtimePay = hours * rate;
+
+BankAccount BankAccount::operator+(const BankAccount& account) {
+    return BankAccount(balance + account.balance);
 }
-// Check bonus eligibility
-void Employee::isEligibleForBonus(){
-    if (salary >= 50000){
-        bonus = salary * 0.10;
-        cout << "Eligible for bonus." << endl;
+
+bool BankAccount::operator==(const BankAccount& account) const {
+    return balance == account.balance;
+}
+
+int main() {
+    double balance1, balance2;
+
+    cout << "Enter balance for Account 1: ";
+    cin >> balance1;
+
+    cout << "Enter balance for Account 2: ";
+    cin >> balance2;
+
+    BankAccount account1(balance1);
+    BankAccount account2(balance2);
+
+    // Add balances
+    BankAccount account3 = account1 + account2;
+
+    cout << "\nCombined Account Balance:" << endl;
+    account3.displayBalance();
+
+    // Compare balances
+    if (account1 == account2) {
+        cout << "Both accounts have identical balances." << endl;
     }
-    else{
-        bonus = 0;
-        cout << "Not eligible for bonus." << endl;
+    else {
+        cout << "The accounts have different balances." << endl;
     }
-}
-// Calculate net salary
-void Employee::calculateNetSalary(){
-    netSalary = salary + bonus + overtimePay;
-}
-// Display employee details
-void Employee::display(){
-    cout << "Employee ID: " << employeeId << endl;
-    cout << "Employee Name: " << employeeName << endl;
-    cout << "Basic Salary: " << salary << endl;
-    cout << "Bonus: " << bonus << endl;
-    cout << "Overtime Pay: " << overtimePay << endl;
-    cout << "Net Salary: " << netSalary << endl;
-}
-// Destructor
-Employee::~Employee(){
-    cout << "Employee object destroyed." << endl;
-}
-int main(){
-    int n;
-    int id;
-    string name;
-    float salary;
-    int overtimeHours;
-    float overtimeRate;
-    cout << "Enter number of employees: ";
-    cin >> n;
-    Employee employees[10];
-    // Input employee details
-    for (int i = 0; i < n; i++){
-        cout << "Enter employee " << i + 1 << " ID: ";
-        cin >> id;
-        cout << "Enter employee " << i + 1 << " name: ";
-        cin >> name;
-        cout << "Enter employee " << i + 1 << " salary: ";
-        cin >> salary;
-        employees[i].setData(id, name, salary);
-    }
-    // Salary processing
-    for (int i = 0; i < n; i++){
-        cout << "Enter overtime hours for employee " << i + 1 << ": ";
-        cin >> overtimeHours;
-        cout << "Enter overtime rate for employee " << i + 1 << ": ";
-        cin >> overtimeRate;
-        employees[i].calculateOvertimePay(overtimeHours, overtimeRate);
-        employees[i].isEligibleForBonus();
-        employees[i].calculateNetSalary();
-    }
-    // Display employee details
-    cout << "\nEmployee Details:" << endl;
-    for (int i = 0; i < n; i++){
-        employees[i].display();
-    }
+
     return 0;
 }
