@@ -274,66 +274,114 @@
 
 
 
+    // #include <iostream>
+    // using namespace std;
+
+    // class BankAccount {
+    // private:
+    //     double balance;
+
+    // public:
+    //     // Constructor
+    //     BankAccount(double b);
+
+    //     // Display balance
+    //     void displayBalance();
+
+    //     // Operator overloading
+    //     BankAccount operator+(const BankAccount& account);
+    //     bool operator==(const BankAccount& account) const;
+    // };
+
+    // BankAccount::BankAccount(double b) {
+    //     balance = b;
+    // }
+
+    // void BankAccount::displayBalance() {
+    //     cout << "Balance: " << balance << endl;
+    // }
+
+    // BankAccount BankAccount::operator+(const BankAccount& account) {
+    //     return BankAccount(balance + account.balance);
+    // }
+
+    // bool BankAccount::operator==(const BankAccount& account) const {
+    //     return balance == account.balance;
+    // }
+
+    // int main() {
+    //     double balance1, balance2;
+
+    //     cout << "Enter balance for Account 1: ";
+    //     cin >> balance1;
+
+    //     cout << "Enter balance for Account 2: ";
+    //     cin >> balance2;
+
+    //     BankAccount account1(balance1);
+    //     BankAccount account2(balance2);
+
+    //     // Add balances
+    //     BankAccount account3 = account1 + account2;
+
+    //     cout << "\nCombined Account Balance:" << endl;
+    //     account3.displayBalance();
+
+    //     // Compare balances
+    //     if (account1 == account2) {
+    //         cout << "Both accounts have identical balances." << endl;
+    //     }
+    //     else {
+    //         cout << "The accounts have different balances." << endl;
+    //     }
+
+    //     return 0;
+    // }
+
+
+
+
 #include <iostream>
+#include <string>
 using namespace std;
-
-class BankAccount {
-private:
+class BankAccount
+{
+    int accountNo;
+    string name;
     double balance;
-
 public:
-    // Constructor
-    BankAccount(double b);
-
-    // Display balance
-    void displayBalance();
-
-    // Operator overloading
-    BankAccount operator+(const BankAccount& account);
-    bool operator==(const BankAccount& account) const;
+    void getDetails()
+    {
+        cout << "Enter Account Number: ";
+        cin >> accountNo;
+        cout << "Enter Account Holder Name: ";
+        cin >> name;
+        cout << "Enter Initial Balance: ";
+        cin >> balance;
+    }
+    void display()
+    {
+        cout << "Account Number: " << accountNo << endl;
+        cout << "Account Holder: " << name << endl;
+        cout << "Balance: " << balance << endl;
+    }
 };
-
-BankAccount::BankAccount(double b) {
-    balance = b;
-}
-
-void BankAccount::displayBalance() {
-    cout << "Balance: " << balance << endl;
-}
-
-BankAccount BankAccount::operator+(const BankAccount& account) {
-    return BankAccount(balance + account.balance);
-}
-
-bool BankAccount::operator==(const BankAccount& account) const {
-    return balance == account.balance;
-}
-
-int main() {
-    double balance1, balance2;
-
-    cout << "Enter balance for Account 1: ";
-    cin >> balance1;
-
-    cout << "Enter balance for Account 2: ";
-    cin >> balance2;
-
-    BankAccount account1(balance1);
-    BankAccount account2(balance2);
-
-    // Add balances
-    BankAccount account3 = account1 + account2;
-
-    cout << "\nCombined Account Balance:" << endl;
-    account3.displayBalance();
-
-    // Compare balances
-    if (account1 == account2) {
-        cout << "Both accounts have identical balances." << endl;
+int main()
+{
+    int n;
+    cout << "Enter number of customers: ";
+    cin >> n;
+    // Dynamically allocate account objects at runtime
+    BankAccount *accounts = new BankAccount[n];
+    for (int i = 0; i < n; i++){
+        cout << "\nEnter details for customer " << i + 1 << ":" << endl;
+        accounts[i].getDetails();
     }
-    else {
-        cout << "The accounts have different balances." << endl;
+    cout << "\nCustomer Account Details:" << endl;
+    for (int i = 0; i < n; i++){
+        accounts[i].display();
     }
-
+    // Release the dynamically allocated memory
+    delete[] accounts;
     return 0;
 }
