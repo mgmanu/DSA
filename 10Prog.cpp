@@ -341,47 +341,102 @@
 
 
 
+// #include <iostream>
+// #include <string>
+// using namespace std;
+// class BankAccount
+// {
+//     int accountNo;
+//     string name;
+//     double balance;
+// public:
+//     void getDetails()
+//     {
+//         cout << "Enter Account Number: ";
+//         cin >> accountNo;
+//         cout << "Enter Account Holder Name: ";
+//         cin >> name;
+//         cout << "Enter Initial Balance: ";
+//         cin >> balance;
+//     }
+//     void display()
+//     {
+//         cout << "Account Number: " << accountNo << endl;
+//         cout << "Account Holder: " << name << endl;
+//         cout << "Balance: " << balance << endl;
+//     }
+// };
+// int main()
+// {
+//     int n;
+//     cout << "Enter number of customers: ";
+//     cin >> n;
+//     // Dynamically allocate account objects at runtime
+//     BankAccount *accounts = new BankAccount[n];
+//     for (int i = 0; i < n; i++){
+//         cout << "\nEnter details for customer " << i + 1 << ":" << endl;
+//         accounts[i].getDetails();
+//     }
+//     cout << "\nCustomer Account Details:" << endl;
+//     for (int i = 0; i < n; i++){
+//         accounts[i].display();
+//     }
+//     // Release the dynamically allocated memory
+//     delete[] accounts;
+//     return 0;
+// }
+
+
+
+
 #include <iostream>
 #include <string>
 using namespace std;
-class BankAccount
+class Employee
 {
-    int accountNo;
+protected:
     string name;
-    double balance;
+    double salary;
 public:
-    void getDetails()
-    {
-        cout << "Enter Account Number: ";
-        cin >> accountNo;
-        cout << "Enter Account Holder Name: ";
+    void getDetails(){
+        cout << "Enter employee name: ";
         cin >> name;
-        cout << "Enter Initial Balance: ";
-        cin >> balance;
+        cout << "Enter employee salary: ";
+        cin >> salary;
     }
-    void display()
-    {
-        cout << "Account Number: " << accountNo << endl;
-        cout << "Account Holder: " << name << endl;
-        cout << "Balance: " << balance << endl;
+    void calculateSalary(){
+        cout << "Name: " << name << endl;
+        cout << "Salary: " << salary << endl;
+    }
+    virtual void calculateBonus(){
+        cout << "Bonus: " << salary * 0.05 << endl;
+    }
+};
+class Manager : public Employee{
+public:
+    void calculateBonus() override{
+        cout << "Bonus: " << salary * 0.20 << endl;
+    }
+};
+class Developer : public Employee{
+public:
+    void calculateBonus() override{
+        cout << "Bonus: " << salary * 0.10 << endl;
     }
 };
 int main()
 {
-    int n;
-    cout << "Enter number of customers: ";
-    cin >> n;
-    // Dynamically allocate account objects at runtime
-    BankAccount *accounts = new BankAccount[n];
-    for (int i = 0; i < n; i++){
-        cout << "\nEnter details for customer " << i + 1 << ":" << endl;
-        accounts[i].getDetails();
-    }
-    cout << "\nCustomer Account Details:" << endl;
-    for (int i = 0; i < n; i++){
-        accounts[i].display();
-    }
-    // Release the dynamically allocated memory
-    delete[] accounts;
+    Manager m;
+    Developer d;
+    cout << "Enter Manager Details" << endl;
+    m.getDetails();
+    cout << "\nEnter Developer Details" << endl;
+    d.getDetails();
+    cout << "\nManager Details" << endl;
+    m.calculateSalary();
+    m.calculateBonus();
+    cout << "\nDeveloper Details" << endl;
+    d.calculateSalary();
+    d.calculateBonus();
     return 0;
 }
