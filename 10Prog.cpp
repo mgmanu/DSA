@@ -389,54 +389,98 @@
 
 
 
+// #include <iostream>
+// #include <string>
+// using namespace std;
+// class Employee
+// {
+// protected:
+//     string name;
+//     double salary;
+// public:
+//     void getDetails(){
+//         cout << "Enter employee name: ";
+//         cin >> name;
+//         cout << "Enter employee salary: ";
+//         cin >> salary;
+//     }
+//     void calculateSalary(){
+//         cout << "Name: " << name << endl;
+//         cout << "Salary: " << salary << endl;
+//     }
+//     virtual void calculateBonus(){
+//         cout << "Bonus: " << salary * 0.05 << endl;
+//     }
+// };
+// class Manager : public Employee{
+// public:
+//     void calculateBonus() override{
+//         cout << "Bonus: " << salary * 0.20 << endl;
+//     }
+// };
+// class Developer : public Employee{
+// public:
+//     void calculateBonus() override{
+//         cout << "Bonus: " << salary * 0.10 << endl;
+//     }
+// };
+// int main()
+// {
+//     Manager m;
+//     Developer d;
+//     cout << "Enter Manager Details" << endl;
+//     m.getDetails();
+//     cout << "\nEnter Developer Details" << endl;
+//     d.getDetails();
+//     cout << "\nManager Details" << endl;
+//     m.calculateSalary();
+//     m.calculateBonus();
+//     cout << "\nDeveloper Details" << endl;
+//     d.calculateSalary();
+//     d.calculateBonus();
+//     return 0;
+// }
+
+
+
+
 #include <iostream>
-#include <string>
 using namespace std;
-class Employee
+class Ticket
 {
-protected:
-    string name;
-    double salary;
 public:
-    void getDetails(){
-        cout << "Enter employee name: ";
-        cin >> name;
-        cout << "Enter employee salary: ";
-        cin >> salary;
-    }
-    void calculateSalary(){
-        cout << "Name: " << name << endl;
-        cout << "Salary: " << salary << endl;
-    }
-    virtual void calculateBonus(){
-        cout << "Bonus: " << salary * 0.05 << endl;
+    virtual void calculateFare(){
+        cout << "Ticket Fare" << endl;
     }
 };
-class Manager : public Employee{
+class RegularShow : public Ticket
+{
+    int fare;
 public:
-    void calculateBonus() override{
-        cout << "Bonus: " << salary * 0.20 << endl;
+    void calculateFare(){
+        cout << "Enter Regular Show Ticket Fare: ";
+        cin >> fare;
+        cout << "Regular Show Fare: Rs. " << fare << endl;
     }
 };
-class Developer : public Employee{
+class PremiumShow : public Ticket
+{
+    int fare;
 public:
-    void calculateBonus() override{
-        cout << "Bonus: " << salary * 0.10 << endl;
+    void calculateFare(){
+        cout << "Enter Premium Show Ticket Fare: ";
+        cin >> fare;
+        cout << "Premium Show Fare: Rs. " << fare << endl;
     }
 };
 int main()
 {
-    Manager m;
-    Developer d;
-    cout << "Enter Manager Details" << endl;
-    m.getDetails();
-    cout << "\nEnter Developer Details" << endl;
-    d.getDetails();
-    cout << "\nManager Details" << endl;
-    m.calculateSalary();
-    m.calculateBonus();
-    cout << "\nDeveloper Details" << endl;
-    d.calculateSalary();
-    d.calculateBonus();
+    Ticket *t;
+    RegularShow r;
+    PremiumShow p;
+    t = &r;
+    t->calculateFare();
+    t = &p;
+    t->calculateFare();
     return 0;
 }
